@@ -5,10 +5,9 @@ from .models import Book, Author
 
 def list_books(request, library_id):
     library = get_object_or_404(Library, id=library_id)
-    books = Book.objects.filter(library=library)  # show only books from that library
+    books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {
-        'books': books,
-        'library': library
+        'books': books
     })
 
 
