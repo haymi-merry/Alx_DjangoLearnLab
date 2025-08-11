@@ -5,9 +5,9 @@ from django.dispatch import receiver
 
 class UserProfile(models.Model):
     ROLE_CHOICES = [
-        ('admin', 'Admin'),
-        ('librarian', 'Librarian'),
-        ('member', 'Member'),
+        ('Admin', 'Admin'),
+        ('Librarian', 'Librarian'),
+        ('Member', 'Member'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='member')
