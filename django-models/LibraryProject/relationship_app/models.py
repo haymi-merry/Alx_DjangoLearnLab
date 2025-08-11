@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-class userProfile(models.Model):
+class UserProfile(models.Model):
     ROLE_CHOICES = [
         ('admin', 'Admin'),
         ('librarian', 'Librarian'),
@@ -18,7 +18,7 @@ class userProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        userProfile.objects.create(user=instance)
+        UserProfile.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
