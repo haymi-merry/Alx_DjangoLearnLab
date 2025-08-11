@@ -52,15 +52,15 @@ def register(request):
 # -------------------------------
 # ROLE CHECK FUNCTIONS
 # -------------------------------
-def is_admin(user):
+def is_Admin(user):
     return user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Admin'
 
 
-def is_librarian(user):
+def is_Librarian(user):
     return user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Librarian'
 
 
-def is_member(user):
+def is_Member(user):
     return user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Member'
 
 
@@ -68,18 +68,18 @@ def is_member(user):
 # ROLE-BASED VIEWS
 # -------------------------------
 @login_required
-@user_passes_test(is_admin)
+@user_passes_test(is_Admin)
 def admin_view(request):
     return render(request, 'relationship_app/admin_view.html')
 
 
 @login_required
-@user_passes_test(is_librarian)
+@user_passes_test(is_Librarian)
 def librarian_view(request):
     return render(request, 'relationship_app/librarian_view.html')
 
 
 @login_required
-@user_passes_test(is_member)
+@user_passes_test(is_Member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
